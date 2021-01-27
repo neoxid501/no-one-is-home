@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="No One is Home"
+run/main_scene="res://Stage/Test Scene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+G="*res://Control/Global.gd"
 
 [rendering]
 
