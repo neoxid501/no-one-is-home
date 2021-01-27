@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/abilities/shoot/crosshair.png" type="Texture" id=2]
+[ext_resource path="res://player/abilities/flashlight/FlashLight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/abilities/footstep/FootstepSound.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -33,6 +34,9 @@ material/0 = null
 [node name="Head" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
 
+[node name="FlashLight" parent="Head" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0 )
+
 [node name="Camera" type="Camera" parent="Head"]
 cull_mask = 2147483649
 current = true
@@ -49,6 +53,7 @@ material/0 = null
 modulate = Color( 1, 1, 1, 0.392157 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 2 )
 stretch_mode = 4
 __meta__ = {

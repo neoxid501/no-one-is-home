@@ -11,6 +11,7 @@ var air_acceleration = 2
 var acceleration = ground_acceleration
 
 var jump_height = 4.5
+var mantle_height = 4.0
 var gravity = 9.8
 
 var stick_amount = 10
@@ -80,12 +81,10 @@ func _physics_process(delta):
 	movement.y = gravity_vec.y
 	move_and_slide(movement, Vector3.UP)
 	
-	print(str($HeadCast.get_collider(), " | ", $BodyCast.get_collider()))
-	
 	#mounting check
 	if $HeadCast.get_collider() == null and $BodyCast.get_collider() != null and Input.is_key_pressed(KEY_SPACE):
 		grounded = false
-		gravity_vec = Vector3.UP * jump_height
+		gravity_vec = Vector3.UP * mantle_height
 	
 
 func crouch(crouched):

@@ -21,7 +21,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-G="*res://Control/Global.gd"
+G="*res://Control/Global.tscn"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
 
 [rendering]
 

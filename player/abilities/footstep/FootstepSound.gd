@@ -23,7 +23,7 @@ func _ready():
 	player = get_tree().get_root().find_node("Player", true ,false)
 	timer_speed = $Timer.wait_time
 
-func _process(delta):
+func _process(_delta):
 	if player:
 		if $Timer.is_stopped():
 			if player.direction != Vector3() and player.is_on_floor(): # If we move on the floor play the sound and adjust the footstep rate

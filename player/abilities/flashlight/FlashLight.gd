@@ -8,7 +8,7 @@ var sound = light_on_sound
 func _ready():
 	hide()
 
-func _input(event):
+func _input(_event):
 	if Input.is_key_pressed(KEY_F) and $Timer.is_stopped():
 		visible = !visible
 		$Timer.start()
