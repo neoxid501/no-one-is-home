@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "ResourceFormatLoader",
+"class": "HTerrainDataLoader",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_loader.gd"
+}, {
+"base": "ResourceFormatSaver",
+"class": "HTerrainDataSaver",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
+} ]
 _global_script_class_icons={
-
+"HTerrainDataLoader": "",
+"HTerrainDataSaver": ""
 }
 
 [application]
@@ -27,6 +38,10 @@ G="*res://Control/Global.tscn"
 
 window/size/width=1280
 window/size/height=720
+
+[editor_plugins]
+
+enabled=PoolStringArray( "zylann.hterrain" )
 
 [rendering]
 
