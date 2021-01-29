@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="No One is Home"
-run/main_scene="res://Stage/Test Scene.tscn"
+run/main_scene="res://Stage/Mindscape Variant 1/Mindescape v1.tscn"
 config/icon="res://icon.png"
 
 [autoload]

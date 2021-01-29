@@ -10,7 +10,7 @@ var occupied = false
 
 var mouse_sensitivity = 1
 
-var walk_speed = 8
+var walk_speed = 10
 var sprint_multiplier = 1.5
 var crouch_multiplier = 0.5
 
@@ -18,7 +18,7 @@ var ground_acceleration = 8
 var air_acceleration = 2
 var acceleration = ground_acceleration
 
-var jump_height = 4.5
+var jump_height = 7.5
 var mantle_height = 4.0
 var gravity = 9.8
 
