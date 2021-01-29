@@ -18,9 +18,9 @@ var ground_acceleration = 8
 var air_acceleration = 2
 var acceleration = ground_acceleration
 
-var jump_height = 7.5
-var mantle_height = 4.0
-var gravity = 9.8
+var jump_height = 10.5
+var mantle_height = 6.0
+var gravity = 19.6
 
 var stick_amount = 10
 
