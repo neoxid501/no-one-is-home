@@ -4,7 +4,9 @@
 [ext_resource path="res://Objects/3D Label/OQ_UI2DLabel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Symbols/Symbol Poster.gd" type="Script" id=3]
 
-[node name="Symbol Poster" type="Spatial"]
+[node name="Symbol Poster" type="Spatial" groups=[
+"Symbol Poster",
+]]
 script = ExtResource( 3 )
 
 [node name="Symbol" type="Sprite3D" parent="."]

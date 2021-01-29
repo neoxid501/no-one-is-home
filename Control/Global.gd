@@ -24,6 +24,9 @@ var CODE_LENGTH = [[3, 3, 4]]
 var TIME_LIMIT = [[8]]
 
 #instance variables
+#game variables
+var player = 0
+var stage = 0
 #player variables
 var difficulty = DIFF.EASY
 var codes = [] #3d array for player codes | 1D - player, 2D - code per stage, 3d - code
