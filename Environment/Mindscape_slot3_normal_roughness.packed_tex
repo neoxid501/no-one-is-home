@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 1024,
+	"src": {
+		"a": "res://Environment/Height Terrain/HTextures/moss/Moss001_1K_Roughness.jpg",
+		"rgb": "res://Environment/Height Terrain/HTextures/moss/Moss001_1K_Normal.jpg"
+	}
+}

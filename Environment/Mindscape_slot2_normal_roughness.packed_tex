@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 1024,
+	"src": {
+		"a": "res://Environment/Height Terrain/HTextures/foam/AcousticFoam003_1K_Roughness.png",
+		"rgb": "res://Environment/Height Terrain/HTextures/foam/AcousticFoam003_1K_Normal.png"
+	}
+}

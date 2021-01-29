@@ -1,0 +1,8 @@
+{
+	"contains_albedo": true,
+	"resolution": 1024,
+	"src": {
+		"a": "res://Environment/Height Terrain/HTextures/foam/AcousticFoam003_1K_Displacement.png",
+		"rgb": "res://Environment/Height Terrain/HTextures/foam/AcousticFoam003_1K_Color.png"
+	}
+}
