@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Code Input/Code Input.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Symbols/Images/0.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto/Roboto-Black.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Stage/Player 2/Player 2 Screen.gd" type="Script" id=4]
+[ext_resource path="res://Entities/2D Geist/Geist 2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Player Mouse/Player Mouse.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -14,65 +16,76 @@ font_data = ExtResource( 3 )
 [node name="Player 2 Screen" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="UI" type="Node2D" parent="."]
+z_index = -1
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
 margin_right = 1280.0
 margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 122.0
-margin_top = 24.0
-margin_right = 1158.0
-margin_bottom = 696.0
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CenterContainer"]
+margin_left = 118.0
+margin_top = 3.0
+margin_right = 1162.0
+margin_bottom = 716.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 1036.0
-margin_bottom = 120.0
+[node name="Label" type="Label" parent="UI/CenterContainer/VBoxContainer"]
+margin_right = 1044.0
+margin_bottom = 161.0
 custom_fonts/font = SubResource( 1 )
-text = "These symbols were found in your friend's room.
-Ask him to search for these symbols, and help you decipher the code.
-Match what he's describing to the symbols below."
+text = "AVOID THE RED GEISTS OR YOU'RE OUT
+Ask your friend to go to the beacons and get near them to find a symbol.
+Match what he's describing to the symbols below.
+If they match, ask your friend for the number above the symbol."
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 124.0
-margin_right = 1036.0
-margin_bottom = 380.0
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CenterContainer/VBoxContainer"]
+margin_top = 165.0
+margin_right = 1044.0
+margin_bottom = 421.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_right = 256.0
+[node name="TextureRect" type="TextureRect" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 4.0
+margin_right = 260.0
 margin_bottom = 256.0
 texture = ExtResource( 2 )
 
-[node name="TextureRect2" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 260.0
-margin_right = 516.0
+[node name="TextureRect2" type="TextureRect" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 264.0
+margin_right = 520.0
 margin_bottom = 256.0
 texture = ExtResource( 2 )
 
-[node name="TextureRect3" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 520.0
-margin_right = 776.0
+[node name="TextureRect3" type="TextureRect" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 524.0
+margin_right = 780.0
 margin_bottom = 256.0
 texture = ExtResource( 2 )
 
-[node name="TextureRect4" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-margin_left = 780.0
-margin_right = 1036.0
+[node name="TextureRect4" type="TextureRect" parent="UI/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 784.0
+margin_right = 1040.0
 margin_bottom = 256.0
 texture = ExtResource( 2 )
 
-[node name="Code Input" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+[node name="Code Input" parent="UI/CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 384.0
-margin_right = 1036.0
-margin_bottom = 672.0
+margin_top = 425.0
+margin_right = 1044.0
+margin_bottom = 713.0
 perm = true
+
+[node name="Player Mouse" parent="." instance=ExtResource( 6 )]
+position = Vector2( 644.484, 358.752 )
+
+[node name="Geist 2D" parent="." instance=ExtResource( 5 )]
+[connection signal="hit" from="Player Mouse" to="." method="_on_Player_Mouse_hit"]

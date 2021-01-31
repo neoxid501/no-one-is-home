@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Geist_2D",
+"language": "GDScript",
+"path": "res://Entities/2D Geist/Geist 2D.gd"
+}, {
 "base": "ResourceFormatLoader",
 "class": "HTerrainDataLoader",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
 } ]
 _global_script_class_icons={
+"Geist_2D": "",
 "HTerrainDataLoader": "",
 "HTerrainDataSaver": ""
 }

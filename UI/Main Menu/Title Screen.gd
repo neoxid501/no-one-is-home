@@ -4,11 +4,10 @@ extends Node2D
 onready var playerOption = $"CenterContainer/VBoxContainer/PlayerNumber"
 
 #instance variables
-var screen_size : Vector2 = Vector2()
+var screen_size = Vector2()
 
 
 func _ready():
-	G.gameRoom = self
 	resize()
 	#add the buttons
 	add_option_buttons()

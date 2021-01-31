@@ -2,6 +2,7 @@ extends Node
 
 #preloads
 var pauseMenu = preload("res://UI/Pause Menu/Pause Menu.tscn")
+var transitionFade = preload("res://UI/Transition/Transition.tscn")
 
 #paths
 const SYMBOL_PATH = [
@@ -28,6 +29,7 @@ var TIME_LIMIT = [[8]]
 var player = 0
 var stage = 0
 var gameRoom = null #reference to the current game room
+var win = false
 #player variables
 var difficulty = DIFF.EASY
 var codes = [] #3d array for player codes | 1D - player, 2D - code per stage, 3d - code
@@ -40,7 +42,7 @@ func _ready():
 
 func _process(_delta):
 	#pause check
-	if Input.is_key_pressed(KEY_ESCAPE) and get_tree().get_nodes_in_group("Pause Menu").size() <= 0:
+	if gameRoom != null and player <= 0 and Input.is_key_pressed(KEY_ESCAPE) and get_tree().get_nodes_in_group("Pause Menu").size() <= 0:
 		var p = pauseMenu.instance()
 		add_child(p)
 
@@ -54,20 +56,28 @@ func start_game(newSeed):
 	print(str("Codes: ", codes, "\nSymbols: ", symbols, "\nPositions: ", posterPos))
 	#redirect to proper scene depending on player number
 	if player <= 0:
-		get_tree().change_scene_to(load("res://Stage/Mindscape Variant 1/Mindescape v1.tscn"))
+		change_scene("res://Stage/Mindscape Variant 1/Mindescape v1.tscn")
 	else:
-		get_tree().change_scene_to(load("res://Stage/Player 2/Player 2 Screen.tscn"))
+		change_scene("res://Stage/Player 2/Player 2 Screen.tscn")
 
 #resets the game variables so a new one can be started
 func reset_game():
 	stage = 0
+	gameRoom = null
+	win = false
+	print("reset")
+	change_scene("res://UI/Main Menu/Title Screen.tscn")
 
 #advances gameplay to the next stage
-func advance_stage():
+func advance_stage(loss=false):
+	#check for loss
+	if loss:
+		change_scene("res://UI/End Screen/End Screen.tscn")
 	stage += 1
 	#check for victory
 	if stage >= CODE_LENGTH[difficulty].size():
-		pass
+		win = true
+		change_scene("res://UI/End Screen/End Screen.tscn")
 	else: #call the gameroom to update the stage values
 		gameRoom.stage_update()
 
@@ -114,3 +124,15 @@ func generate_poster_positions():
 			pos.append(i)
 		pos.shuffle()
 		posterPos.append(pos)
+
+# ---- Tools -----
+
+#global accessible short function to change scene
+func change_scene(sc, transition=1):
+	match transition:
+		0: #instant transition
+			get_tree().change_scene(sc)
+		1: #fade transition
+			var t = transitionFade.instance()
+			get_parent().add_child(t)
+			t.set_scene(sc)

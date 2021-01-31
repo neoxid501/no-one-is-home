@@ -24,3 +24,21 @@ func _on_Resume_pressed():
 #quit the game
 func _on_Quit_pressed():
 	get_tree().quit()
+
+#update give up button
+func _on_Give_Up_pressed():
+	match $"VBoxContainer/Give Up".text:
+		"Give Up":
+			$"VBoxContainer/Give Up".text = "Don't Do It"
+		"Don't Do It":
+			$"VBoxContainer/Give Up".text = "You're Worth It"
+		"You're Worth It":
+			$"VBoxContainer/Give Up".text = "Please?"
+		"Please?":
+			$"VBoxContainer/Give Up".text = "You sure?"
+		"You sure?":
+			$"VBoxContainer/Give Up".text = "Last chance..."
+		"Last chance...":
+			get_tree().paused = false
+			G.advance_stage(true)
+			queue_free()
