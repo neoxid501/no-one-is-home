@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player/Player.gd" type="Script" id=1]
 [ext_resource path="res://player/abilities/shoot/crosshair.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Roboto/Roboto-Black.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://player/abilities/flashlight/FlashLight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/abilities/footstep/FootstepSound.tscn" type="PackedScene" id=7]
 
@@ -16,6 +17,11 @@ radius = 0.5
 top_radius = 0.05
 bottom_radius = 0.1
 height = 0.5
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -71,3 +77,26 @@ cast_to = Vector3( 0, 0, -1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257619, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -1.5 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 1146.0
+margin_bottom = 764.0
+custom_fonts/font = SubResource( 4 )
+text = "WASD - Move
+Shift - Sprint
+Spacebar - Jump
+Hold Spacebar on edge to Mantle
+
+Go toward the blue beacons to find a symbol.
+Match the Symbol with what your friend has.
+Visiting a beacon turns its color orange.
+
+Press 'R' to input your code
+Press 'H' to hide these instructions"
+__meta__ = {
+"_edit_use_anchors_": false
+}

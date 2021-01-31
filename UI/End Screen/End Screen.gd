@@ -7,6 +7,7 @@ onready var label = $CenterContainer/VBoxContainer/Label
 var screen_size = Vector2()
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	resize()
 	if G.player <= 0:
 		if G.win:
@@ -15,9 +16,12 @@ func _ready():
 			label.text = "Lost...\n\nBut never forgotten.\n\n"
 	else:
 		if G.win:
-			label.text = "They've Found Themselves\n\nThanks to You\n\n"
+			var code = ""
+			for c in G.codes[0][G.stage-1]:
+				code += str(c)
+			label.text = "They Can Find Themselves\nThanks to You\n\nTheir last code is: " + code
 		else:
-			label.text = "You failed... but your friend still needs you.\nWant to go back?\n(Enter the same seed at the main menu to continue.Previous passwords will not have changed.)"
+			label.text = "You failed... but your friend still needs you.\nWant to go back?\n(Enter the same seed at the main menu to continue.\nPrevious passwords will not have changed.)"
 
 #auto resize screen
 func _process(delta) -> void:
@@ -28,7 +32,7 @@ func _process(delta) -> void:
 func resize():
 	screen_size = OS.get_window_size()
 	$CenterContainer.rect_size = screen_size
-	var scale = get_viewport().size.x / $Sprite.texture.get_size().x
+	var scale = screen_size.x / $Sprite.texture.get_size().x
 	$Sprite.set_scale(Vector2(scale, scale))
 
 #return to main menu, reset game

@@ -4,7 +4,7 @@
 [ext_resource path="res://Objects/Symbols/Images/0.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto/Roboto-Black.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Stage/Player 2/Player 2 Screen.gd" type="Script" id=4]
-[ext_resource path="res://Entities/2D Geist/Geist 2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/2D Geist/Geist 2D Spawning/Geist 2D Spawning.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Player Mouse/Player Mouse.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -87,5 +87,5 @@ perm = true
 [node name="Player Mouse" parent="." instance=ExtResource( 6 )]
 position = Vector2( 644.484, 358.752 )
 
-[node name="Geist 2D" parent="." instance=ExtResource( 5 )]
+[node name="Geist 2D Spawning" parent="." instance=ExtResource( 5 )]
 [connection signal="hit" from="Player Mouse" to="." method="_on_Player_Mouse_hit"]

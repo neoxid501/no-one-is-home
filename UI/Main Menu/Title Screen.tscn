@@ -1,10 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Main Menu/Title Screen.gd" type="Script" id=1]
 [ext_resource path="res://Logo/Logo Sized.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Button Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/Menu Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Fonts/Menu Label Font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Roboto/Roboto-Black.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="Theme" id=1]
 PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
@@ -45,47 +52,58 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 256.0
-margin_top = 32.0
+margin_top = 16.0
 margin_right = 1024.0
-margin_bottom = 559.0
+margin_bottom = 576.0
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 768.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 3 )
+text = "https://carlodm.dev/NOIH"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 33.0
 margin_right = 768.0
-margin_bottom = 66.0
+margin_bottom = 99.0
 custom_fonts/font = ExtResource( 5 )
 text = "Which Player Are You?"
 align = 1
 
 [node name="PlayerNumber" type="OptionButton" parent="CenterContainer/VBoxContainer"]
-margin_top = 70.0
+margin_top = 103.0
 margin_right = 768.0
-margin_bottom = 152.0
+margin_bottom = 185.0
 theme = SubResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Player 1"
 icon = SubResource( 2 )
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_top = 156.0
+margin_top = 189.0
 margin_right = 768.0
-margin_bottom = 291.0
+margin_bottom = 324.0
 custom_fonts/font = ExtResource( 5 )
 text = "Enter Seed (note: it must be
 THE SAME for all players:"
 align = 1
 
 [node name="TextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer"]
-margin_top = 295.0
+margin_top = 328.0
 margin_right = 768.0
-margin_bottom = 403.0
+margin_bottom = 436.0
 rect_min_size = Vector2( 768, 108 )
 custom_fonts/font = ExtResource( 4 )
 text = "Replace with your Seed"
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 407.0
+margin_top = 440.0
 margin_right = 768.0
-margin_bottom = 527.0
+margin_bottom = 560.0
 custom_fonts/font = ExtResource( 3 )
 text = "Start"
 __meta__ = {

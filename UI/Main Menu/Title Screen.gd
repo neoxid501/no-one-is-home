@@ -26,7 +26,7 @@ func _process(delta) -> void:
 func resize():
 	screen_size = OS.get_window_size()
 	$CenterContainer.rect_size = screen_size
-	var scale = get_viewport().size.x / $Sprite.texture.get_size().x
+	var scale = screen_size.x / $Sprite.texture.get_size().x
 	$Sprite.set_scale(Vector2(scale, scale))
 
 #start the game

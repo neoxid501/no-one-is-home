@@ -43,6 +43,9 @@ func _process(_delta):
 		G.add_child(c)
 		occupied = true
 		c.connect("dismissed", self, "_menu_dismissed")
+	#instructions
+	if Input.is_action_just_pressed("hide"):
+		$Node2D.visible = !$Node2D.visible
 
 func _input(event):
 	if !occupied:

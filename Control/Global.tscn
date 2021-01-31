@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Control/Global.gd" type="Script" id=1]
+[ext_resource path="res://Sound/BGM/NOIH - 4 - RAMP.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sound/BGM/NOIH - 2.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sound/BGM/NOIH - 3.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sound/BGM/NOIH - 1.wav" type="AudioStream" id=5]
 
 [node name="Global" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
+
+[node name="1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+[connection signal="finished" from="4" to="." method="_on_4_finished"]

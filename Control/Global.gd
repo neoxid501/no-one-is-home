@@ -15,7 +15,21 @@ const SYMBOL_PATH = [
 	"res://Objects/Symbols/Images/6.png",
 	"res://Objects/Symbols/Images/7.png",
 	"res://Objects/Symbols/Images/8.png",
-	"res://Objects/Symbols/Images/9.png"
+	"res://Objects/Symbols/Images/9.png",
+	"res://Objects/Symbols/Images/10.png",
+	"res://Objects/Symbols/Images/11.png",
+	"res://Objects/Symbols/Images/12.png",
+	"res://Objects/Symbols/Images/13.png",
+	"res://Objects/Symbols/Images/14.png",
+	"res://Objects/Symbols/Images/15.png",
+	"res://Objects/Symbols/Images/16.png",
+	"res://Objects/Symbols/Images/17.png",
+	"res://Objects/Symbols/Images/18.png",
+	"res://Objects/Symbols/Images/19.png",
+	"res://Objects/Symbols/Images/20.png",
+	"res://Objects/Symbols/Images/21.png",
+	"res://Objects/Symbols/Images/22.png",
+	"res://Objects/Symbols/Images/23.png",
 ]
 
 #constants
@@ -45,6 +59,8 @@ func _process(_delta):
 	if gameRoom != null and player <= 0 and Input.is_key_pressed(KEY_ESCAPE) and get_tree().get_nodes_in_group("Pause Menu").size() <= 0:
 		var p = pauseMenu.instance()
 		add_child(p)
+	#music check
+	update_music()
 
 # ----- Gameplay -----
 
@@ -65,7 +81,6 @@ func reset_game():
 	stage = 0
 	gameRoom = null
 	win = false
-	print("reset")
 	change_scene("res://UI/Main Menu/Title Screen.tscn")
 
 #advances gameplay to the next stage
@@ -73,10 +88,12 @@ func advance_stage(loss=false):
 	#check for loss
 	if loss:
 		change_scene("res://UI/End Screen/End Screen.tscn")
-	stage += 1
+	else:
+		stage += 1
 	#check for victory
 	if stage >= CODE_LENGTH[difficulty].size():
 		win = true
+		stage = 0
 		change_scene("res://UI/End Screen/End Screen.tscn")
 	else: #call the gameroom to update the stage values
 		gameRoom.stage_update()
@@ -136,3 +153,28 @@ func change_scene(sc, transition=1):
 			var t = transitionFade.instance()
 			get_parent().add_child(t)
 			t.set_scene(sc)
+
+#update the music being played
+func update_music():
+	var p = $"1"
+	if stage >= 1:
+		p = $"2"
+	if stage >= 2:
+		p = $"3"
+	if !p.playing:
+		if p != $"1":
+			if !$"4".playing:
+				$"4".play()
+		else:
+			$"2".stop()
+			$"3".stop()
+			$"1".play()
+
+#ramp sound finished
+func _on_4_finished():
+	if stage <= 1:
+		$"1".stop()
+		$"2".play()
+	else:
+		$"2".stop()
+		$"3".play()

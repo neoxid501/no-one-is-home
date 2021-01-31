@@ -1,6 +1,11 @@
 extends Node2D
 
-var screen_size : Vector2 = Vector2()
+#preloads
+var geistSpawner = preload("res://Entities/2D Geist/Geist 2D Spawning/Geist 2D Spawning.tscn")
+
+
+#instance variables
+var screen_size = Vector2()
 
 func _ready():
 	G.gameRoom = self
@@ -33,6 +38,11 @@ func update_symbols():
 #update the room to the current stage
 func stage_update():
 	update_symbols()
+	#add new geist
+	var g = geistSpawner.instance()
+	add_child(g)
+	g.position = Vector2(randi()%int(screen_size.x), randi()%int(screen_size.y))
+	g.type = G.stage
 
 #the mouse was hit by a geist
 func _on_Player_Mouse_hit():

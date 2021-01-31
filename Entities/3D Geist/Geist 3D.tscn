@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/3D Geist/Geist 3D.glb" type="PackedScene" id=1]
 [ext_resource path="res://Entities/3D Geist/Geist 3D.gd" type="Script" id=2]
+[ext_resource path="res://Sound/BGM/NOIH - 5 - Geist.wav" type="AudioStream" id=3]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 1.5
@@ -34,4 +35,9 @@ material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_size = 4.0
+autoplay = true
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
