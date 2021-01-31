@@ -4,6 +4,7 @@ extends Spatial
 var poster = preload("res://Objects/Symbols/Symbol Poster.tscn")
 
 func _ready():
+	G.gameRoom = self
 	spawn_posters()
 
 #generate posters based on current stage in global
@@ -21,3 +22,7 @@ func spawn_posters():
 		p.set_values(G.symbols[G.stage][i], c, pos.global_transform.origin)
 		#iterate
 		i += 1
+
+#update the stage to the current values
+func stage_update():
+	spawn_posters()

@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/Code Input/Code Input.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Symbols/Images/0.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Roboto/Roboto-Black.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Stage/Player 2/Player 2 Screen.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Player 2 Screen" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 122.0
+margin_top = 24.0
+margin_right = 1158.0
+margin_bottom = 696.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 1036.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 1 )
+text = "These symbols were found in your friend's room.
+Ask him to search for these symbols, and help you decipher the code.
+Match what he's describing to the symbols below."
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 124.0
+margin_right = 1036.0
+margin_bottom = 380.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 256.0
+margin_bottom = 256.0
+texture = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 260.0
+margin_right = 516.0
+margin_bottom = 256.0
+texture = ExtResource( 2 )
+
+[node name="TextureRect3" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 520.0
+margin_right = 776.0
+margin_bottom = 256.0
+texture = ExtResource( 2 )
+
+[node name="TextureRect4" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 780.0
+margin_right = 1036.0
+margin_bottom = 256.0
+texture = ExtResource( 2 )
+
+[node name="Code Input" parent="CenterContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 384.0
+margin_right = 1036.0
+margin_bottom = 672.0
+perm = true

@@ -25,12 +25,13 @@ var TIME_LIMIT = [[8]]
 
 #instance variables
 #game variables
-var player = 0
+var player = 1
 var stage = 0
+var gameRoom = null #reference to the current game room
 #player variables
 var difficulty = DIFF.EASY
 var codes = [] #3d array for player codes | 1D - player, 2D - code per stage, 3d - code
-var symbols= [] #2d array for symbols to use for each code | 1D - stage, 2D - symbol index
+var symbols = [] #2d array for symbols to use for each code | 1D - stage, 2D - symbol index
 var posterPos = [] #2d array for the positions to spawn the symbols | same as above
 
 func _ready():
@@ -38,8 +39,7 @@ func _ready():
 	
 	#TEST LINES
 	
-	seed(1239584)
-	generate_game()
+	start_game(1239584)
 	print(str("Codes: ", codes, "\nSymbols: ", symbols, "\nPositions: ", posterPos))
 
 func _process(_delta):
@@ -47,6 +47,34 @@ func _process(_delta):
 	if Input.is_key_pressed(KEY_ESCAPE) and get_tree().get_nodes_in_group("Pause Menu").size() <= 0:
 		var p = pauseMenu.instance()
 		add_child(p)
+
+# ----- Gameplay -----
+
+#begins a new game
+func start_game(newSeed):
+	seed(newSeed)
+	stage = 0
+	generate_game()
+	#redirect to proper scene depending on player number
+	if player <= 0:
+		get_tree().change_scene_to(load("res://Stage/Mindscape Variant 1/Mindescape v1.tscn"))
+	else:
+		get_tree().change_scene_to(load("res://Stage/Player 2/Player 2 Screen.tscn"))
+
+#resets the game variables so a new one can be started
+func reset_game():
+	stage = 0
+
+#advances gameplay to the next stage
+func advance_stage():
+	stage += 1
+	#check for victory
+	if stage >= CODE_LENGTH[difficulty].size():
+		pass
+	else: #call the gameroom to update the stage values
+		gameRoom.stage_update()
+
+# ----- Generation -----
 
 #all calls that require randomization are done here to avoid further changing
 # the seed after it's set by the players
@@ -59,6 +87,7 @@ func generate_game():
 func generate_player_codes():
 	#iterate once per player
 	for _player in range(2):
+		var pCodes = []
 		#iterate through each needed code length generating a code and symbols
 		for codeLength in CODE_LENGTH[difficulty]:
 			#generate a code for the stage
@@ -67,7 +96,8 @@ func generate_player_codes():
 				var num = randi() % 10 #generate number 0 - 9
 				if !code.has(num): #unique number
 					code.append(num)
-			codes.append(code) #add code to list of player codes
+			pCodes.append(code) #add code to list of player codes
+		codes.append(pCodes)
 
 #determine which symbols correspond to what number
 func generate_symbols_cypher():
