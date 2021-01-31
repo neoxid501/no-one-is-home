@@ -1,2 +1,3 @@
 # no-one-is-home
- GGJ
+Global Game Jam 2021 Entry
+To be updated along with my website!
