@@ -25,7 +25,7 @@ var TIME_LIMIT = [[8]]
 
 #instance variables
 #game variables
-var player = 1
+var player = 0
 var stage = 0
 var gameRoom = null #reference to the current game room
 #player variables

@@ -20,6 +20,7 @@ func set_values(s, n, p=null):
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Player"):
+		$AnimationPlayer.play("Visited")
 		beacon.hide()
 		poster.show()
 

@@ -29,7 +29,7 @@ func update_symbols():
 		var code = ""
 		for c in G.codes[0][G.stage-1]:
 			code += str(c)
-		$CenterContainer/VBoxContainer/Label.text = "\nTell Player 1 to Use This Code: " + str(code) + "\n"
+		$CenterContainer/VBoxContainer/Label.text = "\nTell Them to Use This Code: " + str(code) + "\n"
 
 #update the room to the current stage
 func stage_update():
