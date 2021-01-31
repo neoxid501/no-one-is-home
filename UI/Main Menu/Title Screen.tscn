@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UI/Main Menu/Title Screen.gd" type="Script" id=1]
+[ext_resource path="res://Logo/Logo Sized.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Button Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/Menu Font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/Menu Label Font.tres" type="DynamicFont" id=5]
+
+[sub_resource type="Theme" id=2]
+PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = ExtResource( 4 )
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+
+[sub_resource type="ExternalTexture" id=1]
+
+[node name="Title Screen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 128.0
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 256.0
+margin_top = 32.0
+margin_right = 1024.0
+margin_bottom = 559.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 768.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 5 )
+text = "Which Player Are You?"
+align = 1
+
+[node name="PlayerNumber" type="OptionButton" parent="CenterContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 768.0
+margin_bottom = 152.0
+theme = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
+text = "Player 1"
+icon = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 156.0
+margin_right = 768.0
+margin_bottom = 291.0
+custom_fonts/font = ExtResource( 5 )
+text = "Enter Seed (note: it must be
+THE SAME for all players:"
+align = 1
+
+[node name="TextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer"]
+margin_top = 295.0
+margin_right = 768.0
+margin_bottom = 403.0
+rect_min_size = Vector2( 768, 108 )
+custom_fonts/font = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 407.0
+margin_right = 768.0
+margin_bottom = 527.0
+custom_fonts/font = ExtResource( 3 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

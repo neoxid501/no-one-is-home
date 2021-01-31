@@ -36,11 +36,7 @@ var posterPos = [] #2d array for the positions to spawn the symbols | same as ab
 
 func _ready():
 	pass
-	
-	#TEST LINES
-	
-	start_game(1239584)
-	print(str("Codes: ", codes, "\nSymbols: ", symbols, "\nPositions: ", posterPos))
+
 
 func _process(_delta):
 	#pause check
@@ -55,6 +51,7 @@ func start_game(newSeed):
 	seed(newSeed)
 	stage = 0
 	generate_game()
+	print(str("Codes: ", codes, "\nSymbols: ", symbols, "\nPositions: ", posterPos))
 	#redirect to proper scene depending on player number
 	if player <= 0:
 		get_tree().change_scene_to(load("res://Stage/Mindscape Variant 1/Mindescape v1.tscn"))
