@@ -26,3 +26,7 @@ func spawn_posters():
 #update the stage to the current values
 func stage_update():
 	spawn_posters()
+
+
+func _on_Geist_Zone_contact():
+	$Player.global_transform = $"Respawn Point".global_transform
