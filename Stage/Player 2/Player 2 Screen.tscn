@@ -39,7 +39,7 @@ __meta__ = {
 margin_right = 1044.0
 margin_bottom = 161.0
 custom_fonts/font = SubResource( 1 )
-text = "AVOID THE RED GEISTS OR YOU'RE OUT
+text = "IF THE MOUSE TOUCHES THE RED GHOST YOU LOSE
 Ask your friend to go to the beacons and get near them to find a symbol.
 Match what he's describing to the symbols below.
 If they match, ask your friend for the number above the symbol."
@@ -88,4 +88,8 @@ perm = true
 position = Vector2( 644.484, 358.752 )
 
 [node name="Geist 2D Spawning" parent="." instance=ExtResource( 5 )]
+
+[node name="Geist 2D Spawning2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1080, 0 )
+type = 2
 [connection signal="hit" from="Player Mouse" to="." method="_on_Player_Mouse_hit"]

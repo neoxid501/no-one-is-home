@@ -16,7 +16,9 @@ func _on_Timer_timeout():
 		0:
 			g.__ready()
 		1:
-			g.__ready(220, 8, Geist_2D.B.CHASE)
+			g.__ready(320, 8, Geist_2D.B.CHASE)
+		2:
+			g.__ready(270, 12, Geist_2D.B.CHASE)
 		_:
 			g.__ready(190, 1, Geist_2D.B.UPDATE)
 	g.global_position = global_position
