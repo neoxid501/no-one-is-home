@@ -19,7 +19,7 @@ func spawn_posters():
 		var p = poster.instance()
 		pos.add_child(p)
 		#set the symbol, value, and position
-		p.set_values(G.symbols[G.stage][i], c, pos.global_transform.origin)
+		p.set_values(G.symbols[G.stage][c], c, pos.global_transform.origin)
 		#iterate
 		i += 1
 
